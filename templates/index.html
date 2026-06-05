@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔐 Password Strength Analyzer</h1>
+            <p>Check how strong your password is and get suggestions for improvement</p>
+        </header>
+
+        <main>
+            <!-- Password Input Section -->
+            <div class="card">
+                <h2>Check Password Strength</h2>
+                <div class="form-group">
+                    <label for="password">Enter Password:</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        placeholder="Type a password to analyze..."
+                        autocomplete="off"
+                    >
+                    <button id="togglePassword" class="toggle-btn">Show</button>
+                </div>
+            </div>
+
+            <!-- Strength Indicator -->
+            <div class="card" id="strengthCard" style="display: none;">
+                <h3>Strength Analysis</h3>
+                <div class="strength-meter">
+                    <div id="strengthBar" class="strength-bar"></div>
+                </div>
+                <div class="strength-info">
+                    <span id="strengthText" class="strength-text"></span>
+                    <span id="strengthPercentage" class="strength-percentage"></span>
+                </div>
+                <div id="scoreDisplay" class="score-display"></div>
+            </div>
+
+            <!-- Issues and Suggestions -->
+            <div class="card" id="issuesCard" style="display: none;">
+                <h3>⚠️ Issues Found</h3>
+                <ul id="issuesList" class="issues-list"></ul>
+            </div>
+
+            <!-- No Issues -->
+            <div class="card" id="successCard" style="display: none;">
+                <h3>✅ Great Password!</h3>
+                <p>Your password meets all security requirements!</p>
+            </div>
+
+            <!-- Generate Password Section -->
+            <div class="card">
+                <h2>Generate Strong Password</h2>
+                <div class="form-group">
+                    <label for="passwordLength">Password Length:</label>
+                    <input 
+                        type="range" 
+                        id="passwordLength" 
+                        min="8" 
+                        max="32" 
+                        value="12"
+                    >
+                    <span id="lengthDisplay">12</span>
+                </div>
+                <button id="generateBtn" class="btn-primary">Generate Password</button>
+            </div>
+
+            <!-- Generated Password Display -->
+            <div class="card" id="generatedCard" style="display: none;">
+                <h3>Generated Password</h3>
+                <div class="generated-password">
+                    <input 
+                        type="text" 
+                        id="generatedPassword" 
+                        readonly 
+                        class="password-display"
+                    >
+                    <button id="copyBtn" class="btn-secondary">Copy</button>
+                </div>
+                <div id="generatedAnalysis" class="generated-analysis"></div>
+            </div>
+
+            <!-- Password Tips -->
+            <div class="card info-card">
+                <h3>💡 Password Security Tips</h3>
+                <ul>
+                    <li><strong>Length:</strong> Aim for at least 12 characters</li>
+                    <li><strong>Complexity:</strong> Mix uppercase, lowercase, numbers, and symbols</li>
+                    <li><strong>Uniqueness:</strong> Don't reuse passwords across different accounts</li>
+                    <li><strong>Avoid:</strong> Common words, birthdays, or sequential numbers</li>
+                    <li><strong>Storage:</strong> Consider using a password manager</li>
+                </ul>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Password Strength Analyzer | Keep your accounts secure!</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
